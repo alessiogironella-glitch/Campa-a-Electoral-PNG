@@ -17,11 +17,11 @@ cont++;
 return;
 }
 
-if(cont==0) mensaje.innerText="¡Correcto! y encima a la primera.";
-else if(cont<=3) mensaje.innerText="¡Correcto!";
-else if(cont<=6) mensaje.innerText="Correcto... aunque te ha costado.";
-else if(cont<=11) mensaje.innerText="Correcto, no se te da muy bien.";
-else mensaje.innerText="Correcto, tremenda cantidad de intentos.";
+if(cont==0) mensaje.innerText="¡Correcto! y encima a la primera,  aqui tienes el programa electoral del PNG.";
+else if(cont<=3) mensaje.innerText="¡Correcto! Aqui tienes el programa electoral del PNG.";
+else if(cont<=6) mensaje.innerText="Correcto... aunque te ha costado un poco,  aqui tienes el programa electoral del PNG.";
+else if(cont<=11) mensaje.innerText="Correcto, no se te da muy bien advivinar, aqui tienes el programa electoral del PNG.";
+else mensaje.innerText="Correcto, tremenda cantidad de intentos, aunque no soy nadie para criticar,  aqui tienes el programa electoral del PNG.";
 
 crearNotepad();
 
@@ -29,11 +29,11 @@ crearNotepad();
 
 function crearNotepad(){
 
-let texto=`-Mejoraré la bolsa mucho con nuevos minijuegos como el uno, el póker y la ruleta.
+let texto=`-Mejoraré la bolsa mucho con nuevos minijuegos como el uno, el póker, apuestas a caballos y la ruleta de la suerte.
 
--Un gran juego utilizando los países de los roles de poder para simular el comercio global.
+-Un gran juego utilizando los países de los roles de poder para simular el comercio global con su PIB y PIB per capita y sus respectivas divisas.
 
--Estableceré una nueva religión del estado: El garrismo.
+-Estableceré una nueva religión del estado: El garrismo, con nuevos roles para el canal de la iglesia.
 
 -Protegeré a las minorías del servidor (Canarios)
 
@@ -83,3 +83,4 @@ moviendo=false;
 ventana.querySelector(".cerrar").onclick=()=>ventana.remove();
 
 }
+
