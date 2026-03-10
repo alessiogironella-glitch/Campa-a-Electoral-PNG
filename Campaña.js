@@ -80,6 +80,16 @@ document.addEventListener("mouseup",()=>{
 moviendo=false;
 });
 
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter") {
+        event.preventDefault();
+        adivinar();
+    }
+
+});
+
 ventana.querySelector(".cerrar").onclick=()=>ventana.remove();
+
 
 }
