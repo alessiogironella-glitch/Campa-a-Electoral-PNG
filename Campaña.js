@@ -1,55 +1,85 @@
-let numAleatorio = Math.floor(Math.random() * 11);
+let numAleatorio = Math.floor(Math.random()*11);
 let cont = 0;
 
-function adivinar() {
+function adivinar(){
 
-    let n = Number(document.getElementById("numero").value);
-    let mensaje = document.getElementById("mensaje");
+let n = Number(document.getElementById("numero").value);
+let mensaje = document.getElementById("mensaje");
 
-    if (isNaN(n)) {
-        mensaje.innerText = "Formato numero incorrecto >:(";
-        return;
-    }
-
-    if (n !== numAleatorio) {
-        mensaje.innerText = "Numero incorrecto";
-        cont++;
-        return;
-    }
-
-    if(cont==0) mensaje.innerText="¡Correcto! y encima a la primera, vaya maquina.";
-    else if(cont<=3) mensaje.innerText="¡Correcto! Buen trabajo.";
-    else if(cont<=6) mensaje.innerText="Correcto... aunque te ha costado un poco.";
-    else if(cont<=11) mensaje.innerText="Correcto, no se te da muy bien adivinar.";
-    else mensaje.innerText="Correcto, tremenda cantidad de intentos.";
-
-    document.getElementById("descargar").style.display = "block";
+if(isNaN(n)){
+mensaje.innerText="Formato numero incorrecto >:(";
+return;
 }
 
-function descargar(){
+if(n!==numAleatorio){
+mensaje.innerText="Numero incorrecto";
+cont++;
+return;
+}
 
-let texto =
-`-Mejoraré la bolsa mucho, con nuevos minijuegos como el uno, el póker, la ruleta de la suerte, el monopoly y apuestas a caballos.
+if(cont==0) mensaje.innerText="¡Correcto! y encima a la primera.";
+else if(cont<=3) mensaje.innerText="¡Correcto!";
+else if(cont<=6) mensaje.innerText="Correcto... aunque te ha costado.";
+else if(cont<=11) mensaje.innerText="Correcto, no se te da muy bien.";
+else mensaje.innerText="Correcto, tremenda cantidad de intentos.";
 
--Un gran juego utilizando los paises de los roles de poder para simular el comercio global con las divisas de cada país y sus respectivos PIB y PIB per capita
+crearNotepad();
 
--Estableceré y crearé una nueva religión del estado: El garrismo.
+}
+
+function crearNotepad(){
+
+let texto=`-Mejoraré la bolsa mucho con nuevos minijuegos como el uno, el póker y la ruleta.
+
+-Un gran juego utilizando los países de los roles de poder para simular el comercio global.
+
+-Estableceré una nueva religión del estado: El garrismo.
 
 -Protegeré a las minorías del servidor (Canarios)
 
--Me aseguraré personalmente de crear el codigo para todo estos minijuegos
+-Me aseguraré personalmente de crear el código para todos estos minijuegos.
 
--Realizaré un referendum para decidir si Littencito puede volver
+-Realizaré un referendum para decidir si Littencito puede volver.
 
--Mi objetivo es que descubran el mundo de juegos y diversión del servidor.
+-Mi objetivo es que los integrantes descubran el mundo de juegos del servidor.
 
 -Vivan Los Garres y la Alianza de Virio`;
 
-let blob = new Blob([texto], {type:"text/plain"});
-let link = document.createElement("a");
+let ventana = document.createElement("div");
+ventana.className="ventana";
+ventana.style.left=Math.random()*400+"px";
+ventana.style.top=Math.random()*200+"px";
 
-link.href = URL.createObjectURL(blob);
-link.download = "campaña.txt";
-link.click();
+ventana.innerHTML=`
+<div class="barra">
+<span>campaña.txt - Bloc de notas</span>
+<button class="cerrar">X</button>
+</div>
+<textarea readonly>${texto}</textarea>
+`;
+
+document.getElementById("windows-area").appendChild(ventana);
+
+let barra=ventana.querySelector(".barra");
+
+let offsetX, offsetY, moviendo=false;
+
+barra.addEventListener("mousedown",(e)=>{
+moviendo=true;
+offsetX=e.clientX-ventana.offsetLeft;
+offsetY=e.clientY-ventana.offsetTop;
+});
+
+document.addEventListener("mousemove",(e)=>{
+if(!moviendo) return;
+ventana.style.left=(e.clientX-offsetX)+"px";
+ventana.style.top=(e.clientY-offsetY)+"px";
+});
+
+document.addEventListener("mouseup",()=>{
+moviendo=false;
+});
+
+ventana.querySelector(".cerrar").onclick=()=>ventana.remove();
 
 }
